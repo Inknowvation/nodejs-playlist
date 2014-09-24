@@ -5,13 +5,15 @@ function respondWithHTTPCode(response, code) {
 	response.end();
 }
 
-function route(request,pathname, response) {
+function route(request,pathname, response,postData) {
 
 	var extension = pathname.split('.').pop();
 
 	if ('/' === pathname) {
              response.writeHead(200, {'Content-Type': 'text/html'});
 		response.end(fs.readFileSync('./static' + '/index.html'));
+                
+               
 	} else if ('css' === extension || 'js' === extension) {
 		   var extension = pathname.split('.').pop(),
         extensionTypes = {
